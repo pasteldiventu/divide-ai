@@ -4,8 +4,8 @@ services:
   # Serviço da API NestJS
   api:
     build: 
-    context: ./divide-ai-backend
-    dockerfile: Dockerfile
+      context: ./divide-ai-backend
+      dockerfile: Dockerfile
     container_name: divide-ai-api
     ports:
       - "3000:3000" # Mapeia a porta 3000 do host para a 3000 do container
