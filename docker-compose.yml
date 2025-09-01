@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Serviço da API NestJS
   api:
@@ -21,7 +19,23 @@ services:
     networks:
       - divide-ai-net
 
+  #servico do build frontend Vuejs
+  frontend:
+    build:
+      context: ./divide-ai-frontend
+      dockerfile: Dockerfile
+    container_name: divide-ai-frontend
+    ports:
+      - "5173:5173"
 
+    volumes:
+      - /app/node_modules
+    networks:
+      - divide-ai-net
+    depends_on:
+      - api
+      
+  #banco de dados
   db:
     image: postgres:14-alpine # Usa uma imagem pronta do Postgres
     container_name: divide-ai-postgres
