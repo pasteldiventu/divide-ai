@@ -54,13 +54,18 @@ export class UsersService {
     return result;
   }
 
-  findAll(): Promise<User[]> {
+  findAll(): Promise<UserResponseDto[]> {
     return this.usersRepository.find();
   }
 
-  findOne(id: number): Promise<User | null> {
+  findOne(id: number): Promise<UserResponseDto | null> {
     return this.usersRepository.findOneBy({ id });
   }
+
+  async findOneByUseremail(email: string): Promise<User | null> {
+    return this.usersRepository.findOneBy({ email });
+  }
+
   async remove(id: number): Promise<void> {
       const result = await this.usersRepository.delete(id);
 

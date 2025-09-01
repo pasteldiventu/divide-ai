@@ -10,10 +10,10 @@ async function bootstrap() {
     .setTitle('API Divide aí')
     .setDescription('Documentação da API para o rastreador de despesas compartilhadas.')
     .setVersion('1.0')
-    .addTag('auth', 'Operações de Autenticação') // Tags para organizar as parada
-    .addTag('users', 'Operações relacionadas a Usuários')
-    .addTag('groups', 'Operações relacionadas a Grupos')
-    .addTag('expenses', 'Operações relacionadas a Despesas')
+    .addTag('Auth', 'Operações de Autenticação') // Tags para organizar as parada
+    .addTag('Users', 'Operações relacionadas a Usuários')
+    .addTag('Groups', 'Operações relacionadas a Grupos')
+    .addTag('Expenses', 'Operações relacionadas a Despesas')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

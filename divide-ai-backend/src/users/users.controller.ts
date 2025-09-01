@@ -5,7 +5,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UserResponseDto } from './dto/user-response.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
-@ApiTags('users') 
+@ApiTags('Users') 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -37,6 +37,12 @@ export class UsersController {
   @ApiOperation({ summary: 'Buscar um usuário pelo ID' })
   findOne(@Param('id',ParseIntPipe) id: number) {
     return this.usersService.findOne(id);
+  }
+
+  @Get('/by_email/:email')
+  @ApiOperation({ summary: 'Buscar um usuário pelo Email' })
+  findOneByEmail(@Param('email') email: string) {
+    return this.usersService.findOneByUseremail(email);
   }
 
   @Delete(':id')
