@@ -1,35 +1,33 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+:root {
+  --color-background: #ECF0F1;   /* Clouds */
+  --color-card-bg: #FFFFFF;      /* Branco para o card */
+  --color-text: #2C3E50;          /* Midnight Blue como texto principal */
+  --color-text-soft: #7F8C8D;    /* Asbestos para texto secundário */
+  --color-primary: #2C3E50;       /* Midnight Blue */
+  --color-secondary: #3498DB;     /* Peter River */
+  --color-action: #E74C3C;        /* Alizarin */
+  --color-border: #BDC3C7;       /* Cinza para bordas */
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+html[data-theme='dark'] {
+  --color-background: #1A202C;   /* Grafite */
+  --color-card-bg: #2D3748;      /* Um pouco mais claro que o fundo */
+  --color-text: #E2E8F0;          /* Branco Suave */
+  --color-text-soft: #A0AEC0;    /* Um cinza mais claro que o UI Secundário */
+  --color-primary: #4299E1;       /* Azul Elétrico como destaque */
+  --color-secondary: #4A5568;     /* Cinza Médio */
+  --color-action: #38D39F;        /* Verde Menta */
+  --color-border: #4A5568;       /* Cinza Médio para bordas */
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+input, button {
+  font-family: inherit;
 }
