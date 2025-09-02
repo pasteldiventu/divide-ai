@@ -6,11 +6,11 @@ services:
       dockerfile: Dockerfile
     container_name: divide-ai-api
     ports:
-      - "3000:3000" # Mapeia a porta 3000 do host para a 3000 do container
+      - "3000:3000" # Mapeia a porta 
     depends_on:
-      - db # Garante que o banco de dados inicie antes da API
+      - db # banco de dados inicia antes da API
     environment:
-      # Passa as variáveis de ambiente para a API
+      # Passa as variavel naquele pique 
       DB_HOST: db
       DB_PORT: 5432
       DB_USER: postgres
@@ -19,7 +19,7 @@ services:
     networks:
       - divide-ai-net
 
-  #servico do build frontend Vuejs
+  #servico do build front (oh nojeira)
   frontend:
     build:
       context: ./divide-ai-frontend
@@ -40,7 +40,7 @@ services:
     image: postgres:14-alpine # Usa uma imagem pronta do Postgres
     container_name: divide-ai-postgres
     ports:
-      - "5433:5432" # Expõe o banco na porta 5433 da sua máquina
+      - "5433:5432" # Expõe o banco na porta 5433 da máquina
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} 
