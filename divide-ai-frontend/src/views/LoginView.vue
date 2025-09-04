@@ -26,13 +26,15 @@
             required 
           />
         </div>
-
         <button type="submit" class="btn-login">Entrar</button>
       </form>
 
       <div class="links">
         <a href="#">Esqueceu a senha?</a>
-        <a href="#">Criar conta</a>
+        <router-link to="/create-account">      
+            <a href="#">Criar conta</a>
+        </router-link>
+
       </div>
     </div>
   </div>
@@ -160,7 +162,7 @@ const handleLogin = async () => {
 }
 
 .links a {
-  color: var(--color-secondary);
+  color: var(--color-text);
   text-decoration: none;
   font-size: 0.9rem;
 }
