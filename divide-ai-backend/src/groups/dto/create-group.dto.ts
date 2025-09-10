@@ -1,4 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { GroupStatus } from '../entities/group.entity';
+import { IsEnum,IsOptional } from 'class-validator'
 
 export class CreateGroupDto {
   @ApiProperty({
@@ -13,5 +15,9 @@ export class CreateGroupDto {
     required: false,
   })
   description?: string;
+
+  @IsEnum(GroupStatus)
+  @IsOptional()
+  status?: GroupStatus
 }
 

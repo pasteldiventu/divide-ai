@@ -19,7 +19,6 @@ import { UpdateGroupDto } from './dto/update-group.dto';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { InviteMemberDto } from './dto/invite-member.dto';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { AddMemberDto } from './dto/add-member.dto';
 import {
   ApiBearerAuth,
   ApiTags,
@@ -111,21 +110,5 @@ export class GroupsController {
   @ApiResponse({ status: 404, description: 'Grupo não encontrado.' })
   remove(@Param('id', ParseIntPipe) id: number, @Request() req,) {
     return this.groupsService.remove(id, req.user.id);
-  }
-
-  // --- Rotas de Membros ---
-
-  @Post(':id/members')
-  @ApiOperation({ summary: 'Adicionar um novo membro a um grupo' })
-  @ApiResponse({ status: 201, description: 'Membro adicionado com sucesso.', type: Membership })
-  @ApiResponse({ status: 401, description: 'Não autorizado.' })
-  @ApiResponse({ status: 403, description: 'Acesso negado (usuário não é admin).' })
-  @ApiResponse({ status: 409, description: 'Conflito (usuário já é membro).' })
-  addMember(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() addMemberDto: AddMemberDto,
-    @Request() req,
-  ) {
-    return this.groupsService.addMember(id, addMemberDto.userId, req.user.id);
   }
 }

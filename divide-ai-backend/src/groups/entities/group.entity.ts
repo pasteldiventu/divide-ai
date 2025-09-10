@@ -11,6 +11,11 @@ import { User } from '../../users/entities/user.entity';
 import { Expense } from '../../expenses/entities/expense.entity';
 import { Membership } from './membership.entity';
 
+export enum GroupStatus {
+  ACTIVE = 'ativo',
+  INACTIVE = 'inativo',
+}
+
 @Entity('groups')
 export class Group {
   @PrimaryGeneratedColumn()
@@ -21,6 +26,13 @@ export class Group {
 
   @Column({ type: 'text', nullable: true })
   description: string;
+
+  @Column({
+    type: 'enum',
+    enum: GroupStatus,
+    default: GroupStatus.ACTIVE, 
+  })
+  status: GroupStatus;
 
   @ManyToOne(() => User, { eager: true })
   creator: User;
