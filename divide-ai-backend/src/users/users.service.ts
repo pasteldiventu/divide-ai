@@ -14,6 +14,11 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
+  private toResponseDto(user: User): UserResponseDto {
+    const { passwordHash: _, ...result } = user;
+    return result;
+  }
+
   async create(createUserDto: CreateUserDto): Promise<UserResponseDto> {
     const saltRounds = 10;
     // TODO: Mover a lógica de hash para um hook da entidade ou um serviço de hash
@@ -62,9 +67,17 @@ export class UsersService {
     return this.usersRepository.findOneBy({ id });
   }
 
-  async findOneByUseremail(email: string): Promise<User | null> {
-    return this.usersRepository.findOneBy({ email });
+  findEntityById(id: number): Promise<User | null> {
+    return this.usersRepository.findOneBy({ id });
   }
+  
+  async findOneByUseremail(email: string): Promise<User | null> {
+    return this.usersRepository
+    .createQueryBuilder('user')
+    .where('user.email = :email', { email })
+    .addSelect('user.passwordHash') // <--- Esta linha força a inclusão do hash
+    .getOne();
+}
 
   async remove(id: number): Promise<void> {
       const result = await this.usersRepository.delete(id);

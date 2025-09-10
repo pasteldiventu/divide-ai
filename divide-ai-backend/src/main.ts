@@ -16,6 +16,7 @@ async function bootstrap() {
     .setTitle('API Divide aí')
     .setDescription('Documentação da API para o rastreador de despesas compartilhadas.')
     .setVersion('1.0')
+    .addBearerAuth()
     .addTag('Auth', 'Operações de Autenticação') // Tags para organizar as parada
     .addTag('Users', 'Operações relacionadas a Usuários')
     .addTag('Groups', 'Operações relacionadas a Grupos')
