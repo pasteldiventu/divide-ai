@@ -36,9 +36,8 @@ router.beforeEach((to, from, next) => {
 
   if (to.meta.requiresAuth && !isAuthenticated) {
     next({ name: 'login' });
-  } else if (to.name === 'login' && isAuthenticated) {
-    next({ name: 'dashboard' });
-  } else {
+  } 
+  else {
     next();
   }
 });

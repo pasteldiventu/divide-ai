@@ -66,7 +66,6 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-// 1. Importe sua nova instância em vez do 'axios'
 import apiClient from '@/services/api'; // O '@' é um atalho para a pasta 'src'
 
 const form = ref({

@@ -5,8 +5,8 @@
         <span :class="['status', group.status.toLowerCase()]">{{ group.status }}</span>
       </div>
       <div class="group-body">
-        <span>Total:</span>
-        <span class="total-value">R$ {{ group.total.toFixed(2) }}</span>
+        <span>Descrição do grupo:</span>
+        <span class="group-description">{{ group.description }}</span>
       </div>
     </div>
   </template>
@@ -44,18 +44,18 @@
     font-size: 0.8rem;
     font-weight: bold;
   }
-  .status.pendente {
-    color: var(--accent-red); 
+  .status.inativo {
+    color: #E74C3C; 
     background-color: rgba(239, 68, 68, 0.1);
   }
-  .status.quitado {
-    color: var(--accent-green); 
+  .status.ativo {
+    color: #38D39F; 
     background-color: rgba(34, 197, 94, 0.1);
   }
   .group-body {
     color: var(--color-text-soft); 
   }
-  .total-value {
+  .group-description {
     font-weight: bold;
     color: var(--color-text);
     margin-left: 0.5rem;

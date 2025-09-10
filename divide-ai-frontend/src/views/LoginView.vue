@@ -1,4 +1,5 @@
 <template>
+  <ThemeSwitcher />
   <div class="login-container">
     <div class="login-card">
       <h1 class="title">Divide Aí</h1>
@@ -41,6 +42,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import ThemeSwitcher from '@/components/ThemeSwitcher.vue';
 
 const email = ref('');
 const password = ref('');
