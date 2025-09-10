@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import CreateAccount from '@/views/CreateAccount.vue'
+import DashboardView from '@/views/DashboardView.vue'
 
 
 const router = createRouter({
@@ -20,8 +21,26 @@ const router = createRouter({
       path: '/create-account',
       name: 'create-account',
       component: CreateAccount
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: DashboardView,
+      meta: { requiresAuth: true }
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem('authToken'); // Verifique a existência do seu token
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next({ name: 'login' });
+  } else if (to.name === 'login' && isAuthenticated) {
+    next({ name: 'dashboard' });
+  } else {
+    next();
+  }
+});
 
 export default router

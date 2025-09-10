@@ -31,10 +31,7 @@
 
       <div class="links">
         <a href="#">Esqueceu a senha?</a>
-        <router-link to="/create-account">      
-            <a href="#">Criar conta</a>
-        </router-link>
-
+        <router-link to="/create-account">Criar conta</router-link>
       </div>
     </div>
   </div>
@@ -43,27 +40,29 @@
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const email = ref('');
 const password = ref('');
+const router = useRouter()
+
 
 const handleLogin = async () => {
-  console.log('Tentando fazer login com:');
-  console.log('Email:', email.value);
-  console.log('Senha:', password.value);
   
   try {
     const response = await axios.post('http://localhost:3000/auth/login', {
       email: email.value,
       password: password.value,
     });
-    console.log('Login bem-sucedido!', response.data.access_token);
-    // Salvar o token (localStorage, Pinia, etc.) e redirecionar
+    const token = response.data.access_token;
+    console.log('Login bem-sucedido!', token);
+
+    localStorage.setItem('authToken', token); 
+
+    router.push({ name: 'dashboard' }); 
   } catch (error) {
     console.error('Falha no login:', error.response?.data?.message || error.message);
-    // Mostrar uma mensagem de erro para o usuário
   }
-  
 };
 </script>
 
