@@ -15,7 +15,6 @@
 <script setup>
 import ThemeSwitcher from './ThemeSwitcher.vue';
 
-// nada de tema aqui 🚀
 </script>
 
 <style scoped>
