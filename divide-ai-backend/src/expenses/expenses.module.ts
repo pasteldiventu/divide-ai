@@ -7,13 +7,14 @@ import { ExpenseSplit } from './entities/expense-split.entity';
 import { Group } from '../groups/entities/group.entity';
 import { Membership } from 'src/groups/entities/membership.entity';
 import { AuthModule } from '../auth/auth.module';
+import { GroupExpensesController } from './group-expenses.controller';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Expense, ExpenseSplit, Group, Membership]),
     AuthModule,
   ],
-  controllers: [ExpensesController],
+  controllers: [ExpensesController,GroupExpensesController],
   providers: [ExpensesService],
   exports: [ExpensesService], 
 })

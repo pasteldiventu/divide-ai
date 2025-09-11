@@ -6,6 +6,7 @@ import {
     OneToMany,
     PrimaryGeneratedColumn,
     JoinColumn,
+    DeleteDateColumn
   } from 'typeorm';
   import { User } from '../../users/entities/user.entity';
   import { Group } from '../../groups/entities/group.entity';
@@ -25,7 +26,10 @@ import {
   
     @CreateDateColumn()
     date: Date;
-  
+
+    @DeleteDateColumn() 
+    deletedAt?: Date; 
+
     @Column()
     payerId: number;
   

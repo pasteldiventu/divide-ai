@@ -37,8 +37,8 @@ export class ExpensesService {
     payerId: number,
     createExpenseDto: CreateExpenseDto,
   ): Promise<Expense> {
-    // ... (seu método create existente, que já está excelente, permanece aqui sem alterações) ...
-    const { amount, splitMethod, splits } = createExpenseDto;
+    console.log('DTO RECEBIDO NO SERVIÇO:', JSON.stringify(createExpenseDto, null, 2));
+    const { description, date, amount, splitMethod, splits } = createExpenseDto;
 
     const group = await this.groupRepository.findOneBy({ id: groupId });
     if (!group) {
@@ -70,7 +70,10 @@ export class ExpensesService {
 
     try {
       const expense = queryRunner.manager.create(Expense, {
-        ...createExpenseDto,
+        description,
+        amount,
+        date,
+        splitMethod,
         payerId,
         groupId,
       });
