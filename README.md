@@ -11,7 +11,7 @@ Este projeto permite que usuários criem grupos, registrem despesas e dividam os
 - **Autenticação de Usuários** (Em breve)
 - **CRUD de Usuários**: Criação, visualização, atualização e remoção de usuários.
 - **Gerenciamento de Grupos**: Crie grupos para compartilhar despesas (ex: "Viagem de Fim de Ano", "Aluguel do Apartamento").
-- **Registro de Despesas**: Adicione despesas a um grupo, especificando o valor e quem pagou.
+- **Registro de Despesas**: Adicione despesas a um grupo, especificando o valor e quem pagou. (Em breve)
 - **Interface Reativa**: Frontend construído com Vue.js para uma experiência de usuário fluida.
 - **Documentação da API**: Documentação interativa e automatizada com Swagger (OpenAPI).
 
